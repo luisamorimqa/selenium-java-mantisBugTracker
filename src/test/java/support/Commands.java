@@ -13,6 +13,18 @@ import java.util.Random;
 
 public class Commands extends RunCucumber {
 
+    private static Properties properties;
+
+    static {
+        try(InputStream input = new FileInputStream("src/test/resources/credentials.properties")) {
+            properties = new Properties();
+            properties.load(input);
+        }
+        catch(Exception exception) {
+            throw new RuntimeException("Erro ao carregar arquivo credentials.properties", exception);
+        }
+    }
+
     public void waitElementBeClickable(By element, Integer time) {
         WebDriverWait wait = new WebDriverWait(getDriver(), time);
         wait.until(ExpectedConditions.elementToBeClickable(element));
@@ -24,69 +36,51 @@ public class Commands extends RunCucumber {
     }
 
     public String getTextElement(By element) {
-        waitElementBeVisible(element, 5000);
+        waitElementBeVisible(element, 5);
         return getDriver().findElement(element).getText();
     }
 
     public boolean checkVisibility(By element) {
-        waitElementBeVisible(element, 5000);
+        waitElementBeVisible(element, 5);
         return getDriver().findElement(element).isDisplayed();
     }
 
     public void fillField(By element, String value) {
-        System.out.println("###############################################################################");
+
         try {
-            System.out.println("*************** Preenchendo o campo " + element + " ***************");
-            waitElementBeClickable(element, 5000);
+            System.out.println("Preenchendo o campo " + element);
+            waitElementBeClickable(element, 5);
+            getDriver().findElement(element).clear();
             getDriver().findElement(element).sendKeys(value);
-            System.out.println("*************** Campo preenchido ***************");
         }
         catch(Exception exception) {
-            System.out.println("*************** Ocorreu um erro ao preencher o elemento " + element + " ***************");
-            System.out.println(exception);
+            throw new RuntimeException("Erro ao preencher o elemento: " + element);
         }
     }
 
     public void clickElement(By element) {
-        System.out.println("###############################################################################");
+
         try {
-            System.out.println("*************** Clicando no elemento " + element + " ***************");
-            waitElementBeClickable(element,5000);
+            System.out.println("Clicando no elemento " + element);
+            waitElementBeClickable(element,5);
             getDriver().findElement(element).click();
-            System.out.println("*************** Clique realizado ***************");
         }
         catch(Exception exception) {
-            System.out.println("*************** Ocorreu um erro ao clicar no elemento " + element + " ***************");
-            System.out.println(exception);
+            throw new RuntimeException("Erro ao clicar no elemento: " + element);
         }
     }
 
     public void checkAlertMessage(By element, String value) {
         checkVisibility(element);
-        Assert.assertEquals(value, getTextElement(element));
+        Assert.assertEquals("Mensagem de alerta não corresponde ao esperado!", value, getTextElement(element));
     }
 
     public String getRegisteredUser() {
-        Properties properties = new Properties();
-
-        try(InputStream input = new FileInputStream("src/test/resources/credentials.properties")) {
-            properties.load(input);
-            return properties.getProperty("username");
-        } catch (Exception exception) {
-            return String.valueOf(exception);
-        }
+        return properties.getProperty("username");
     }
 
     public String getRegisteredPassword() {
-        Properties properties = new Properties();
-
-        try(InputStream input = new FileInputStream("src/test/resources/credentials.properties")) {
-            properties.load(input);
-            return properties.getProperty("password");
-        }
-        catch(Exception exception) {
-            return String.valueOf(exception);
-        }
+        return properties.getProperty("password");
     }
 
     public String getInvalidPassword() {

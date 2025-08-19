@@ -52,7 +52,7 @@ public class LoginStepDefinitions {
     }
 
     @Quando("^clico em Sair$")
-    public void clico_em_Sair() throws Exception {
+    public void clico_em_Sair() {
         homePage.clickSair();
     }
 
@@ -67,7 +67,7 @@ public class LoginStepDefinitions {
     }
 
     @Então("^devo ser redirecionado para a tela de login$")
-    public void devo_ser_redirecionado_para_a_tela_de_login() throws Exception {
+    public void devo_ser_redirecionado_para_a_tela_de_login() {
         loginPage.checkLoginPage();
     }
 }

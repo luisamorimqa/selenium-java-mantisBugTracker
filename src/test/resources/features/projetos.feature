@@ -9,9 +9,9 @@ Funcionalidade: Gerenciamento de Projetos
     E estou na tela de gerenciamento de projetos
 
   Cenário: Criar novo projeto
-    Quando clico em "Criar novo projeto"
+    Quando clico em Criar novo projeto
     E preencho o nome do projeto
-    E salvo
+    E clico em Salvar
     Então o projeto deve ser criado com sucesso
 
   Cenário: Atualizar informações do projeto

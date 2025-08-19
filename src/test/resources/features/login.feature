@@ -8,7 +8,7 @@
     Contexto:
       Dado que estou na tela de login do Mantis
 
-    @login-success
+    @login-success @regressao
     Cenário: Login com sucesso
       Quando preencho login válido
       E preencho a senha válida
