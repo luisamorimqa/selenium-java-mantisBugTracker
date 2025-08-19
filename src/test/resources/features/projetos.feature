@@ -4,16 +4,17 @@ Funcionalidade: Gerenciamento de Projetos
   Quero criar e editar projetos
   Para organizar os bugs de forma estruturada
 
-  Cenário: Criar novo projeto
+  Contexto:
     Dado que estou logado como administrador
-    Quando acesso a tela de gerenciamento de projetos
-    E clico em "Criar novo projeto"
+    E estou na tela de gerenciamento de projetos
+
+  Cenário: Criar novo projeto
+    Quando clico em "Criar novo projeto"
     E preencho o nome do projeto
     E salvo
     Então o projeto deve ser criado com sucesso
 
   Cenário: Atualizar informações do projeto
-    Dado que estou na tela de gerenciamento de projetos
     Quando edito um projeto existente
     E altero sua descrição
     Então as alterações devem ser salvas corretamente
