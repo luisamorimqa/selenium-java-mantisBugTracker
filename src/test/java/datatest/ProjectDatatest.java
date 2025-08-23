@@ -1,24 +1,24 @@
 package datatest;
 
-import dto.ProjetoDTO;
+import dto.ProjectDTO;
 import support.SharedData;
 
 import static support.FakeData.*;
 
-public class ProjetoDatatest {
+public class ProjectDatatest {
 
-    public static ProjetoDTO setValue() {
+    public static ProjectDTO setValue() {
 
-        ProjetoDTO projetoDTO = new ProjetoDTO();
+        ProjectDTO projectDTO = new ProjectDTO();
 
-        projetoDTO.setNome(getProjectName());
-        projetoDTO.setEstado(getProjectState());
-        projetoDTO.setHabilitado(getBoolean());
-        projetoDTO.setHerdarCategorias(getBoolean());
-        projetoDTO.setVisibilidade(getProjectVisibilidade());
-        projetoDTO.setDescricao(getProjectDescription());
+        projectDTO.setNome(getProjectName());
+        projectDTO.setEstado(getProjectState());
+        projectDTO.setHabilitado(getBoolean());
+        projectDTO.setHerdarCategorias(getBoolean());
+        projectDTO.setVisibilidade(getProjectVisibilidade());
+        projectDTO.setDescricao(getProjectDescription());
 
-        SharedData.set("projetoDTO", projetoDTO);
-        return projetoDTO;
+        SharedData.set("projectDTO", projectDTO);
+        return projectDTO;
     }
 }
