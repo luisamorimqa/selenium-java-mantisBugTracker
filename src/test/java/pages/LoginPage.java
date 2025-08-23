@@ -13,7 +13,7 @@ public class LoginPage extends BasePage {
     private By alertMessage = By.xpath("//div[@class='alert alert-danger']/p");
 
     public void getPage() {
-        navigateTo(pageUrl);
+        navigateTo("chrome", pageUrl);
     }
 
     public void fillUserField() {

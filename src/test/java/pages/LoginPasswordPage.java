@@ -10,7 +10,7 @@ public class LoginPasswordPage extends BasePage {
     private By entrarButton = By.xpath("//input[@type='submit']");
 
     public void getPage() {
-        navigateTo(pageUrl);
+        navigateTo("chrome", pageUrl);
     }
 
     public void fillPasswordField(){

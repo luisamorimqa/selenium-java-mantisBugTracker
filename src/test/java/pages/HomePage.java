@@ -11,8 +11,8 @@ public class HomePage extends BasePage {
     private By userButton = By.xpath("//a[@data-toggle='dropdown']/i[2]");
     private By sairButton = By.xpath("//*[@id='navbar-container']/div[2]/ul/li[3]/ul/li[4]/a/i");
 
-    public void getUrl() {
-        navigateTo(pageUrl);
+    public void getPage() {
+        navigateTo("chrome", pageUrl);
     }
 
     public void checkTitle() {
