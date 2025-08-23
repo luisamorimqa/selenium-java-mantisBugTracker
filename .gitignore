@@ -1,2 +1,5 @@
 target
 credentials.properties
+/.idea/
+.idea
+.idea/SeleniumMantisBugTracker.iml

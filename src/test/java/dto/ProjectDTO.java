@@ -1,6 +1,6 @@
 package dto;
 
-public class ProjetoDTO {
+public class ProjectDTO {
 
     private String nome;
     private String estado;
@@ -9,9 +9,9 @@ public class ProjetoDTO {
     private String visibilidade;
     private String descricao;
 
-    public ProjetoDTO() {}
+    public ProjectDTO() {}
 
-    public ProjetoDTO(String nome, String estado, boolean habilitado, boolean herdarCategorias, String visibilidade, String descricao) {
+    public ProjectDTO(String nome, String estado, boolean habilitado, boolean herdarCategorias, String visibilidade, String descricao) {
         this.nome = nome;
         this.estado = estado;
         this.habilitado = habilitado;
