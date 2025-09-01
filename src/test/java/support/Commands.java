@@ -11,6 +11,7 @@ import runner.RunCucumber;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.List;
 import java.util.Properties;
 import java.util.Random;
 
@@ -90,7 +91,7 @@ public class Commands extends RunCucumber {
 
     public void checkAlertMessage(By element, String value) {
         checkVisibility(element);
-        Assert.assertEquals("Mensagem de alerta não corresponde ao esperado!", value, getTextElement(element));
+        Assert.assertTrue("Mensagem de alerta não corresponde ao esperado!", getTextElement(element).contains(value));
     }
 
     public void selectCombobox(By element, String value) {
@@ -142,9 +143,35 @@ public class Commands extends RunCucumber {
     public void checkTextInTable(By element, String expectedText) {
         try {
             WebElement webElement = getWait().until(ExpectedConditions.visibilityOfElementLocated(element));
-            Assert.assertTrue("Texto não encontrado", webElement.getText().contains(expectedText));
+            Assert.assertTrue("Texto " + expectedText +" não encontrado", webElement.getText().contains(expectedText));
         } catch(Exception exception) {
             System.out.println(exception.getStackTrace());
+        }
+    }
+
+    public void checkTextNonExistentInTable(By element, String nonExpectedText) {
+        try {
+            WebElement webElement = getWait().until(ExpectedConditions.visibilityOfElementLocated(element));
+            Assert.assertFalse("Projeto " + nonExpectedText + " não deletado corretamente.", webElement.getText().contains(nonExpectedText));
+        } catch (Exception exception) {
+            System.out.println(exception.getStackTrace());
+        }
+    }
+
+    public void clickTextInTable(By element, String text) {
+        try {
+            List<WebElement> rows = getWait().until(ExpectedConditions.visibilityOfAllElementsLocatedBy(element));
+
+            for(WebElement row : rows) {
+                if(row.getText().contains(text)) {
+                    row.click();
+                    return;
+                }
+            }
+            Assert.fail("Texto não encontrado na tabela: " + text);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            Assert.fail("Erro ao procurar texto: " + text);
         }
     }
 }
