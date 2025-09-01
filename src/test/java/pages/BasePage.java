@@ -23,4 +23,8 @@ public class BasePage extends Commands {
     public void navigateTo(String navegador, String value) {
         getDriver(navegador).get(getBaseUrl() + value);
     }
+
+    public void navigateTo(String value) {
+        getDriver().get(getBaseUrl() + value);
+    }
 }
