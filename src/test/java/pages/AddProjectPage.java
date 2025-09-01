@@ -1,5 +1,6 @@
 package pages;
 
+import dto.ProjectDTO;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 
@@ -41,6 +42,16 @@ public class AddProjectPage extends BasePage {
 
     public void clickAddProjectButton() {
         clickElement(addProjectButton);
+    }
+
+    public void createProject(ProjectDTO projectDTO) {
+        getPage();
+        fillProjectName(projectDTO.getNome());
+        selectProjectStatus(projectDTO.getEstado());
+        checkHerdarCategorias(projectDTO.getHerdarCategorias());
+        selectVisibilityProject(projectDTO.getVisibilidade());
+        fillDescriptionField(projectDTO.getDescricao());
+        clickAddProjectButton();
     }
 
     public void checkAddProjectPage() {

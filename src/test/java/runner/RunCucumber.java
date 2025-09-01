@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
         plugin = {"json:target/reports/cuucmberTests.json", "html:target/reports/"},
         features = {"src/test/resources/features"},
         glue = {"steps"},
-        tags = {"@regressao"}
+        tags = {"@delete-project"}
 )
 public class RunCucumber extends RunBase {
 
