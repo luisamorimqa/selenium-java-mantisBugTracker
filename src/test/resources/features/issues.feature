@@ -5,9 +5,10 @@ Funcionalidade: Registro e Gerenciamento de Issues
   Quero registrar e gerenciar bugs
   Para reportar problemas de software
 
+  @create-issue @regressao
   Cenário: Criar nova issue
-    Dado que estou logado no Mantis
-    Quando acesso a tela "Relatar Issue"
+    Dado que estou logado como administrador
+    Quando acesso a tela Create Issue
     E preencho os campos obrigatórios
     E salvo a issue
     Então a issue deve ser criada e aparecer na lista de issues do projeto
